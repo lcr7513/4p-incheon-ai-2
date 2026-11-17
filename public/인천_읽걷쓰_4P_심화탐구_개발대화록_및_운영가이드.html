@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인천 읽걷쓰 4P 심화탐구 랩 전체 개발 대화록 및 운영 가이드</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      line-height: 1.7;
+      color: #1e293b;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 50px 60px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+    .header-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-top: 0;
+      margin-bottom: 16px;
+      border-bottom: 3px solid #10b981;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #1e293b;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      border-left: 4px solid #3b82f6;
+      padding-left: 12px;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #334155;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    .meta-card {
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      border: 1px solid #e2e8f0;
+    }
+    .meta-card p {
+      margin: 6px 0;
+    }
+    .meta-card strong {
+      color: #0f172a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background-color: #1e293b;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .step-box {
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+    }
+    .step-box strong.req {
+      color: #2563eb;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .print-btn-bar {
+      position: sticky;
+      top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-print {
+      background: #0f172a;
+      color: #fff;
+      border: none;
+    }
+    .btn-print:hover {
+      background: #334155;
+    }
+    .btn-md {
+      background: #10b981;
+      color: #fff;
+      border: none;
+    }
+    .btn-md:hover {
+      background: #059669;
+    }
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+      }
+      .print-btn-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="print-btn-bar">
+      <button onclick="window.print()" class="btn btn-print">🖨️ 인쇄 / PDF 다운로드</button>
+      <a href="./인천_읽걷쓰_4P_심화탐구_개발대화록_및_운영가이드.md" download class="btn btn-md">📥 마크다운(.md) 다운로드</a>
+    </div>
+
+    <span class="header-badge">인천광역시교육청 읽걷쓰 교육혁신</span>
+    <h1>4P 심화탐구 랩 전체 개발 대화록 및 교사용 운영 가이드</h1>
+
+    <div class="meta-card">
+      <p><strong>프로젝트명:</strong> 인천 읽걷쓰 4P 전공연계 사회문제탐구 웹 애플리케이션</p>
+      <p><strong>지도교사 계정:</strong> lcr7513@icedu.kr (인천광역시교육청)</p>
+      <p><strong>연동 구글 시트 ID:</strong> <code>1DPRCyd7MfAWiTw1p0oprm_dy3koKjCwkGMRbCypDeN8</code></p>
+      <p><strong>교사 관리 비밀번호:</strong> <code>icedu2026</code> (또는 <code>1234</code>)</p>
+      <p><strong>작성 일자:</strong> 2026년 10월</p>
+    </div>
+
+    <h2>1. 프로젝트 개발 여정 및 대화록 종합 요약</h2>
+    <p>
+      본 애플리케이션은 인천광역시교육청의 핵심 교육 가치인 <strong>"읽걷쓰(읽기·걷기·쓰기)"</strong>를 고등학생들의 4P(현상-문제-과업-실천) 전공심화 사회문제탐구에 접목한 플랫폼입니다.
+      선생님과의 단계별 대화를 통해 실제 학교 수업 현장에서 필요로 하는 모든 기능(타 교과 연계, 6대 연구실별 모범예시, 3인 페르소나 다각도 검증, 구글 시트 16개 표준 열 연동, 학생 열람 차단 및 교사 비밀번호 인증)이 완벽하게 구현되었습니다.
+    </p>
+
+    <h2>2. 주요 단계별 질문 및 해결 내역</h2>
+
+    <div class="step-box">
+      <strong class="req">1단계: 타 교과 연계 확장 (국어·수학·과학·정보)</strong>
+      <p><strong>선생님 질문:</strong> "다른 교과에서도 찾을 수 있는지 알아봐줘. 국어, 수학, 과학, 정보 등이야."</p>
+      <p><strong>반영 내용:</strong> 국어(텍스트마이닝/담화분석), 수학(통계적추론/그래프이론), 과학(해양환경/토양미생물/신재생에너지), 정보(GIS공간분석/AI편향성검증) 교과를 4P 탐구와 융합한 세부 가이드라인 및 공공데이터 연계 완료.</p>
+    </div>
+
+    <div class="step-box">
+      <strong class="req">2단계: 6대 전공 연구실별 완성형 모범 탐구 예시 구축</strong>
+      <p><strong>선생님 질문:</strong> "연구실 6가지 중 1가지만 나와 있어. 나머지 5가지 연구실도 각각 예시를 만들어줘."</p>
+      <p><strong>반영 내용:</strong> 경영경제, 인문철학(개항장 젠트리피케이션), 첨단IT(스마트 엣지 보행신호), 기초과학(수도권매립지 침출수 정화), 바이오의료(공공보건 취약계층 헬스케어), 교육사회(다문화학생 언어격차 거버넌스) 6개 모범 연구를 탑재하고 <strong>[원클릭 불러오기]</strong> 구현.</p>
+    </div>
+
+    <div class="step-box">
+      <strong class="req">3단계: 3인 페르소나 다각도 검증 시스템 구축</strong>
+      <p><strong>선생님 질문:</strong> "3인 페르소나 검증이 경영경제만 나오는데 나머지 5가지 분야도 추가해주고, 학생 작성 내용에 맞게 피드백하는 구조로 만들어줘."</p>
+      <p><strong>반영 내용:</strong> 6개 연구실별로 최적화된 3인 이해관계자(학자, 정책관, 현장주민/당사자 등)를 배정하고, 학생의 4P 작성 내용을 분석하여 찬반 논점과 허점을 날카롭게 찌르는 <strong>동적 피드백 엔진</strong> 탑재.</p>
+    </div>
+
+    <div class="step-box">
+      <strong class="req">4단계: 구글 시트 전송 방식 선정 (방식 A 확정)</strong>
+      <p><strong>선생님 질문:</strong> "탐구 내용을 구글 시트로 전송받고 싶어. 단일 시트 가로 요약형(방식 A)과 다중 탭 상세형(방식 B) 비교 후 방식 A로 작업해줘."</p>
+      <p><strong>반영 내용:</strong> 학생 1명당 1개 행(Row)으로 요약 정리되어 교사가 소팅, 필터링, 성적 처리, 세특 기록에 가장 편리한 <strong>방식 A(16개 표준 컬럼)</strong> 확정 및 실시간 연동.</p>
+    </div>
+
+    <div class="step-box">
+      <strong class="req">5단계: 학생 메타데이터 확장 (학교명·학번 항목 추가)</strong>
+      <p><strong>선생님 질문:</strong> "학생 정보에 학교명과 학번 넣는 항목도 만들어줘."</p>
+      <p><strong>반영 내용:</strong> <code>schoolName</code>, <code>studentId</code> 항목 신설, 6개 모범 프로젝트 업데이트, 오프라인 엑셀(.xls) 및 인쇄 미리보기 양식 동기화.</p>
+    </div>
+
+    <div class="step-box">
+      <strong class="req">6단계: 교사 마스터 시트 연동 및 스마트 헤더 자동 생성</strong>
+      <p><strong>선생님 질문:</strong> "1DPRCyd7MfAWiTw1p0oprm_dy3koKjCwkGMRbCypDeN8 아이디 올릴게 작업해줘."</p>
+      <p><strong>반영 내용:</strong> 선생님 시트 ID를 기본 제출처로 고정하여 학생은 원클릭 제출. 첫 제출 시 16개 표준 헤더를 자동 디자인 생성하는 스마트 감지 로직 적용.</p>
+    </div>
+
+    <div class="step-box">
+      <strong class="req">7단계: 학생 열람 차단 및 교사 비밀번호 인증 잠금 시스템 (보안 강화)</strong>
+      <p><strong>선생님 질문:</strong> "구글시트 바로 열기와 선생님 시트 열기가 학생에게 공개되면 수정이 가능해서 없어야 해. 그리고 교사 인증 탭을 눌렀을 때 비번이 안 보여야 해."</p>
+      <p><strong>반영 내용:</strong> 학생 화면에서는 시트 링크, ID, 열기 버튼을 100% 차단. <strong>[교사 인증]</strong> 버튼을 누르고 비밀번호(<code>icedu2026</code>)를 입력해야만 시트 열기가 활성화되며, 화면의 모든 힌트 문구 제거 완료.</p>
+    </div>
+
+    <h2>3. 구글 시트 연동 규격 (방식 A: 16개 표준 컬럼)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>열</th>
+          <th>컬럼명</th>
+          <th>설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>A</td><td><strong>제출일시</strong></td><td>YYYY-MM-DD HH:mm:ss 제출 타임스탬프</td></tr>
+        <tr><td>B</td><td><strong>학교명</strong></td><td>소속 고등학교명</td></tr>
+        <tr><td>C</td><td><strong>학번</strong></td><td>학년-반-번호 (예: 20415)</td></tr>
+        <tr><td>D</td><td><strong>이름(연구자)</strong></td><td>학생 성명</td></tr>
+        <tr><td>E</td><td><strong>소속/학급</strong></td><td>동아리, 탐구반, 모둠명 등</td></tr>
+        <tr><td>F</td><td><strong>전공 연구실</strong></td><td>6대 전공 연구실 명칭</td></tr>
+        <tr><td>G</td><td><strong>연구 주제</strong></td><td>탐구 계획서 메인 제목</td></tr>
+        <tr><td>H</td><td><strong>핵심 탐구 질문</strong></td><td>가설 및 탐구 관통 핵심 질문</td></tr>
+        <tr><td>I</td><td><strong>P1. 현상</strong></td><td>데이터, 통계, 관찰 수치, 현장 사실</td></tr>
+        <tr><td>J</td><td><strong>P2. 문제원인</strong></td><td>구조적 모순, 원인 분석, 해결 당위성</td></tr>
+        <tr><td>K</td><td><strong>P3. 과업</strong></td><td>전공 학문 이론 및 구체적 연구 방법론</td></tr>
+        <tr><td>L</td><td><strong>P4. 실천</strong></td><td>정책 제언, 캠페인, 프로토타입 등 실천</td></tr>
+        <tr><td>M</td><td><strong>연계 독서 및 답사지</strong></td><td>[독서] 도서명 + [답사] 현장 코스 및 보행수</td></tr>
+        <tr><td>N</td><td><strong>AI 종합 평가 점수</strong></td><td>100점 만점 총점 및 P단계별 평점 요약</td></tr>
+        <tr><td>O</td><td><strong>3인 페르소나 검증</strong></td><td>3인 이해관계자의 비판 질문 및 반응 요약</td></tr>
+        <tr><td>P</td><td><strong>생기부 세특/교사메모</strong></td><td>교사 관찰 메모 및 세특 기록용 키워드</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4. 교사용 학급 운영 가이드</h2>
+    <ul>
+      <li><strong>시트 공유 권한:</strong> 스프레드시트 우측 상단 [공유] &rarr; '인천시교육청(@icedu.kr)' 또는 '링크가 있는 모든 사용자' [편집자] 확인</li>
+      <li><strong>교사 비밀번호:</strong> <code>icedu2026</code> (또는 <code>1234</code>). 교사 구글 계정(<code>lcr7513@icedu.kr</code>) 로그인 시 자동 잠금 해제</li>
+      <li><strong>학생 개인 소장:</strong> 학생 본인 드라이브에 개인 보관을 원하는 경우 모달 상단 [내 드라이브에 새 시트] 안내</li>
+    </ul>
+
+    <p style="margin-top: 40px; text-align: center; color: #64748b; font-size: 13px;">
+      © 인천광역시교육청 읽·걷·쓰 교육혁신 전공연계 사회문제탐구 플랫폼
+    </p>
+  </div>
+
+</body>
+</html>

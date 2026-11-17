@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4P 읽·걷·쓰 전공연계 사회문제탐구 전체 흐름 순서도 (Flowchart)</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #e0e7ff;
+      --emerald: #059669;
+      --amber: #d97706;
+      --purple: #7c3aed;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+      background-color: var(--slate-50);
+      color: var(--slate-800);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 1.5rem;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      overflow: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      color: white;
+      padding: 3rem 2.5rem;
+      position: relative;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #c7d2fe;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+    .content {
+      padding: 2.5rem;
+    }
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--slate-100);
+    }
+    .flowchart-container {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .topic-card {
+      background: linear-gradient(to right, #eff6ff, #f5f3ff);
+      border: 1px solid #bfdbfe;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .topic-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #1d4ed8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+    }
+    .topic-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #1e1b4b;
+      margin-bottom: 0.5rem;
+    }
+    .topic-question {
+      font-size: 0.85rem;
+      color: #4338ca;
+      font-style: italic;
+    }
+    .step-card {
+      border: 1px solid var(--slate-200);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      background: white;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .step-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .step-number {
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: white;
+      background: var(--primary);
+      padding: 0.25rem 0.65rem;
+      border-radius: 0.5rem;
+    }
+    .step-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+    .step-tab {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+    }
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--slate-700);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .step-actions {
+      background: var(--slate-50);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid var(--primary);
+    }
+    .action-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 0.5rem;
+    }
+    .action-list {
+      list-style-type: decimal;
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--slate-700);
+    }
+    .action-list li {
+      margin-bottom: 0.4rem;
+    }
+    .action-list li:last-child {
+      margin-bottom: 0;
+    }
+    .ai-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.35rem;
+      background: #faf5ff;
+      color: #7e22ce;
+      border: 1px solid #e9d5ff;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .btn-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--slate-200);
+    }
+    .btn {
+      padding: 0.65rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.15s ease;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+    .btn-secondary {
+      background: white;
+      color: var(--slate-700);
+      border: 1px solid var(--slate-200);
+    }
+    .btn-secondary:hover {
+      background: var(--slate-50);
+    }
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+      }
+      .btn-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">인천광역시교육청 읽·걷·쓰 교육과정 연계</div>
+      <h1>4P 전공연계 사회문제탐구 전체 흐름 순서도</h1>
+      <p class="subtitle">
+        현상(Phenomenon)을 읽고, 현장(Walk)을 사색하며, 학술적 연구방법(Project)과 사회적 실천(Practice)을 완성하는 7단계 전주기 가이드
+      </p>
+    </header>
+
+    <div class="content">
+      <!-- Visual Flowchart Poster Image -->
+      <div style="margin-bottom: 2.5rem; border-radius: 1rem; overflow: hidden; border: 1px solid var(--slate-200); box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+        <img src="/images/incheon_4p_flowchart.jpg" alt="인천 읽걷쓰 4P 탐구 전체 흐름도 인포그래픽 포스터" style="width: 100%; height: auto; display: block;" />
+        <div style="padding: 0.85rem 1.25rem; background: var(--slate-50); border-top: 1px solid var(--slate-200); font-size: 0.85rem; color: var(--slate-700); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <span>🎨 <strong>인천 학생 4P 읽·걷·쓰 탐구 전체 프로세스 인포그래픽</strong> (7단계 탐구 전주기 모델)</span>
+          <a href="/images/incheon_4p_flowchart.jpg" download="인천_4P_읽걷쓰_순서도_포스터.jpg" style="color: var(--primary); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">🖼️ 고화질 이미지 원본 다운로드</a>
+        </div>
+      </div>
+
+      <!-- Flowchart -->
+      <h2 class="section-title">📊 1. 전체 탐구 순서도 (Flowchart 다이어그램)</h2>
+      <div class="flowchart-container">
+        <div class="mermaid">
+
+flowchart TD
+    classDef startEnd fill:#4F46E5,stroke:#312E81,stroke-width:2px,color:#fff;
+    classDef stepNode fill:#F8FAFC,stroke:#CBD5E1,stroke-width:2px,color:#0F172A;
+    classDef aiNode fill:#FAF5FF,stroke:#A855F7,stroke-width:2px,color:#581C87;
+    classDef finalNode fill:#ECFDF5,stroke:#059669,stroke-width:2px,color:#064E3B;
+
+    Start([🚀 탐구 시작<br/>학생 가이드북 확인]):::startEnd --> S1[1단계: 연구실 & 주제 선정<br/>6대 전공 큐레이션 탐색]:::stepNode
+    S1 --> S2[2단계: 읽기 Read<br/>전공 도서·논문 탐독 & APA/KCI 인용]:::stepNode
+    S2 --> S3[3단계: 걷기 Walk<br/>인천 8대 영역 현장 답사 & 타이머·관찰 메모]:::stepNode
+    S3 --> S4[4단계: 데이터 검증<br/>인천 공공데이터 20종 & 대기질 지표 연계]:::stepNode
+    S4 --> S5[5단계: 쓰기 Write<br/>P1 현상 · P2 문제 · P3 과업 · P4 실천]:::stepNode
+    
+    S5 --> AI1{AI 코파일럿 지원<br/>초안생성 / 학술체다듬기 / 아이디어}:::aiNode
+    AI1 -->|원클릭 본문 반영| S5
+    
+    S5 --> S6[6단계: 다각도 피드백<br/>AI 질문 평가 진단 & 3인 이해관계자 비평]:::stepNode
+    S6 -->|질문 업그레이드 & P4 보완| S5
+    
+    S6 --> S7[7단계: 최종 산출물 완성<br/>NEIS 세특 생성 & A4 보고서/포스터 인쇄]:::finalNode
+    S7 --> End([📤 구글 시트 과제 제출<br/>19개 열 자동 취합 및 교사 피드백]):::startEnd
+        </div>
+      </div>
+
+      <!-- Real Case Model -->
+      <h2 class="section-title">💡 2. 대표 탐구 예시 모델</h2>
+      <div class="topic-card">
+        <div class="topic-label">인문·사회 / 공론장 연구실 추천 사례</div>
+        <div class="topic-title">"인천 원도심(신포·개항장) 무인 키오스크 확산에 따른 고령층 디지털 소외 현상과 세대 상생형 '디지털 다정 가게' 실천 모델"</div>
+        <div class="topic-question">핵심 질문: "원도심 무인화 매장 확산 속에서 고령층의 일상적 접근권과 자기결정권은 어떻게 제도적·공간적으로 보장될 수 있는가?"</div>
+      </div>
+
+      <!-- 7 Steps Detailed Breakdown -->
+      <h2 class="section-title">📝 3. 단계별 상세 앱 이용 매뉴얼</h2>
+
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="step-number">STEP 1</span>
+            <span class="step-name">앱 시작 & 전공 연구실 고르기</span>
+          </div>
+          <span class="step-tab">[학생 탐구 가이드북] ➔ [6대 연구실 탐색]</span>
+        </div>
+        <p class="step-desc">
+          자신의 희망 진로(인문사회, 경영경제, 첨단IT·AI공학, 자연생태, 바이오의료, 교육문화)에 맞는 연구실을 선택하고, 문제의식을 정립합니다.
+        </p>
+        <div class="step-actions">
+          <div class="action-title">구체적 행동 요령:</div>
+          <ol class="action-list">
+            <li>상단 <strong>[학생 탐구 가이드북]</strong> 탭에서 6단계 로드맵과 4P 작성 비법(좋은 예 vs 나쁜 예)을 확인합니다.</li>
+            <li><strong>[6대 연구실 탐색]</strong> 탭에서 <code>[인문사회·공론장]</code> 연구실을 선택합니다.</li>
+            <li>추천 주제 카드에서 <strong>[이 주제로 4P 탐구 시작하기]</strong>를 누르면 제목, 질문, 기초 4P 틀이 워크스페이스에 자동 적용됩니다.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="step-number">STEP 2</span>
+            <span class="step-name">읽기 (Read) — 전공 문헌 탐독 & 출처 규격화</span>
+          </div>
+          <span class="step-tab">[4P 연구계획서] ➔ 독서·문헌 관리</span>
+        </div>
+        <p class="step-desc">
+          선행 연구와 추천 도서·기사를 읽고 연구의 이론적 토대를 다지며, 학술 표준 출처 표기 양식을 획득합니다.
+        </p>
+        <div class="step-actions">
+          <div class="action-title">구체적 행동 요령:</div>
+          <ol class="action-list">
+            <li>연구실 추천 도서(예: 《디지털 격차와 불평등》, 《노인을 위한 시장은 없다》)나 관련 기사를 읽습니다.</li>
+            <li>워크스페이스 하단 <strong>[+ 새 독서·문헌 기록 추가]</strong> 버튼을 클릭합니다.</li>
+            <li>매체 유형(도서, 논문, 기사, 유튜브)을 지정하고 인상 깊은 구절과 내 생각을 기록합니다.</li>
+            <li><strong>[APA/KCI 인용 복사]</strong> 버튼을 눌러 정식 학술 출처 표기 양식을 획득합니다.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="step-number">STEP 3</span>
+            <span class="step-name">걷기 (Walk) — 인천 현장 답사 & 1차 관찰 사실 수집</span>
+          </div>
+          <span class="step-tab">[8대 걷기·현장탐구]</span>
+        </div>
+        <p class="step-desc">
+          책상머리 연구를 벗어나 인천 지역 현장(신포국제시장, 개항장 거리, 배다리 등)을 발로 뛰며 살아있는 관찰 데이터를 수집합니다.
+        </p>
+        <div class="step-actions">
+          <div class="action-title">구체적 행동 요령:</div>
+          <ol class="action-list">
+            <li>현장 답사 출발 시 <strong>[걷기 몰입 타이머 (시작)]</strong>을 눌러 답사 시간과 걸음 수를 측정합니다.</li>
+            <li>무인 매장 키오스크 앞에서 어르신들이 겪는 글자 크기, 결제 시간 제한, 카드 투입구 위치 등을 관찰합니다.</li>
+            <li><strong>[메모를 P1(현상)에 바로 연계 전송]</strong> 버튼을 눌러 현장 관찰 메모를 4P 계획서에 즉시 반영합니다.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="step-number">STEP 4</span>
+            <span class="step-name">데이터 검증 — 인천 공공데이터 지표 연계</span>
+          </div>
+          <span class="step-tab">[실험용 Lab] ➔ [추천 공공데이터 20종]</span>
+        </div>
+        <p class="step-desc">
+          내 관찰 사실이 개인의 착각이 아님을 정부 및 인천시 공공데이터 통계 수치로 객관화합니다.
+        </p>
+        <div class="step-actions">
+          <div class="action-title">구체적 행동 요령:</div>
+          <ol class="action-list">
+            <li><strong>[실험용 Lab]</strong> ➔ <strong>[추천 공공데이터 20종 포털]</strong>로 이동합니다.</li>
+            <li><code>[KOSIS 군·구별 연령별 주민등록인구]</code>를 선택하고 모의 시뮬레이터를 실행합니다.</li>
+            <li>원도심(중구·동구 26.5%)과 신도심(송도 11.2%) 간의 고령화율 격차를 확인합니다.</li>
+            <li><strong>[4P 인용문 생성]</strong>을 클릭하여 객관적 수치(%)가 포함된 관찰 문장을 복사하여 P1/P2에 삽입합니다.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="step-number">STEP 5</span>
+            <span class="step-name">쓰기 (Write) — 4P 계획서 작성 & AI 코파일럿</span>
+          </div>
+          <span class="step-tab">[4P 연구계획서]</span>
+        </div>
+        <p class="step-desc">
+          현상-문제-과업-실천 4단계의 논리적 완결성을 갖춘 심층 보고서를 작성하며 AI 도우미의 지원을 받습니다.
+        </p>
+        <div class="step-actions">
+          <div class="action-title">구체적 행동 요령:</div>
+          <ol class="action-list">
+            <li><strong>P1. 현상</strong>: 현장 답사 관찰 사실 + 공공데이터 수치 서술 <span class="ai-tag">✨ AI 학술체 다듬기</span></li>
+            <li><strong>P2. 문제</strong>: 기술 효율성 지상주의와 사회적 배제 구조 분석 <span class="ai-tag">💡 AI 심화 아이디어</span></li>
+            <li><strong>P3. 과업</strong>: 어르신 FGI 인터뷰 및 UI/UX 사용성 실험 설계 <span class="ai-tag">🪄 AI 초안 생성</span></li>
+            <li><strong>P4. 실천</strong>: 1) 청소년-노인 디지털 동행, 2) '디지털 다정가게' 스티커 캠페인, 3) 지자체 조례 청원</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="step-number">STEP 6</span>
+            <span class="step-name">피드백 — AI 정밀 평가 & 3인 이해관계자 검증</span>
+          </div>
+          <span class="step-tab">[AI 질문 평가·추천] & 워크스페이스 하단</span>
+        </div>
+        <p class="step-desc">
+          장학사/학술 멘토 관점의 AI 채점과 가상 이해관계자 3인의 날카로운 비평을 통해 보고서의 현실성을 극대화합니다.
+        </p>
+        <div class="step-actions">
+          <div class="action-title">구체적 행동 요령:</div>
+          <ol class="action-list">
+            <li><strong>[AI 정밀 평가 실행]</strong>을 눌러 100점 만점 세부 점수(P1~P4)와 강점/보완점을 확인합니다.</li>
+            <li>제안된 3단계 업그레이드 질문 중 <strong>[융합·실천형 완성 질문]</strong>을 선택하여 계획서에 바로 적용합니다.</li>
+            <li>워크스페이스 하단 <strong>[AI 3인 이해관계자 페르소나 검증]</strong>을 실행하여 당사자 어르신, 시민단체, 시청 주무관의 피드백을 반영해 P4(실천)를 보완합니다.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="step-number">STEP 7</span>
+            <span class="step-name">최종 산출물 완성 & 구글 시트 과제 제출</span>
+          </div>
+          <span class="step-tab">[생기부 도우미] ➔ [인쇄/다운로드] ➔ [구글 시트 제출]</span>
+        </div>
+        <p class="step-desc">
+          NEIS 생활기록부 세특 문안을 도출하고, A4 보고서/학술 포스터를 출력하며, 선생님의 구글 시트에 원클릭 제출합니다.
+        </p>
+        <div class="step-actions">
+          <div class="action-title">구체적 행동 요령:</div>
+          <ol class="action-list">
+            <li><strong>[생기부(NEIS) 기재 도우미]</strong> ➔ <code>[✨ Gemini AI 맞춤 세특 생성]</code>을 눌러 교육부 500자/1,500 Byte 표준 문안을 획득합니다.</li>
+            <li><strong>[연구자료 인쇄/다운로드]</strong>를 눌러 <code>A4 학술 보고서</code> 또는 <code>전지 대형 학술 포스터</code>로 PDF 저장/인쇄합니다.</li>
+            <li><strong>[구글 시트 과제 제출]</strong> 버튼을 눌러 구글 로그인 후 <code>[실시간 제출하기]</code>를 클릭하면 선생님 시트에 19개 열 데이터가 1개 행으로 자동 제출됩니다.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Bottom Action Buttons -->
+      <div class="btn-bar">
+        <button class="btn btn-secondary" onclick="window.print()">🖨️ 인쇄하기 / PDF로 저장</button>
+        <a class="btn btn-primary" href="/4P_읽걷쓰_탐구_전체흐름_순서도.md" download="4P_읽걷쓰_탐구_전체흐름_순서도.md">📥 마크다운 파일 다운로드 (.md)</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  </script>
+</body>
+</html>

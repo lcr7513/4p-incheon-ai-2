@@ -1,11 +1,44 @@
-<div align="center">
+# 4P 읽걷쓰 전공연계 사회문제탐구 — 인천 판매 준비본
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+인천 지역 현장을 바탕으로 6대 전공 연구실, 4P 연구계획서, 8대 걷기·현장탐구, AI 질문 진단, 보고서 다운로드를 제공하는 웹앱입니다.
 
-  <h1>Built with AI Studio</h2>
+## 이번 보완본의 핵심
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- 처음 열면 모범 예시임을 분명하게 표시합니다. 예시 속 수치·인터뷰·활동 결과는 실제 조사 결과가 아닙니다.
+- `빈 프로젝트 시작`, `JSON 백업`, `백업 복원` 기능을 추가했습니다.
+- Gemini 연결 여부와 규칙 기반 안전 모드를 사용자에게 구분해 보여줍니다.
+- 모델 이름을 환경변수로 분리하고 기본값을 `gemini-2.5-flash`로 정리했습니다.
+- AI 요청을 IP당 10분에 20회로 제한하고 입력 길이·요청 크기를 제한했습니다.
+- 로컬 사진 14장을 WebP로 변환하여 약 42MB에서 약 2.3MB로 줄였습니다.
+- 공식 교육청 제작물로 오해할 수 있는 문구를 중립적인 표현으로 바꿨습니다.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## 내 컴퓨터에서 실행
 
-</div>
+Node.js LTS가 필요합니다.
+
+```bash
+npm install
+npm run dev
+```
+
+브라우저에서 `http://localhost:3000`을 엽니다.
+
+실제 Gemini 기능을 사용하려면 `.env.example`을 `.env.local`로 복사하고 `GEMINI_API_KEY`를 입력합니다. 키가 없거나 호출에 실패하면 앱은 규칙 기반 안전 모드로 계속 작동합니다. API 키를 브라우저 코드에 직접 넣지 마세요.
+
+## 배포
+
+```bash
+npm install
+npm run build
+npm start
+```
+
+이 버전은 서버 API가 포함되어 있어 Cloud Run 같은 Node.js 호스팅에 적합합니다. 정적 호스팅만 이용하면 Gemini API는 동작하지 않습니다.
+
+## 데이터 저장 방식
+
+학생이 작성한 내용은 기본적으로 해당 브라우저의 `localStorage`에만 저장됩니다. 브라우저 데이터 삭제, 시크릿 모드 종료, 기기 변경 시 사라질 수 있으므로 앱 상단의 `JSON 백업`을 정기적으로 사용하세요. 이 버전에는 교사용 중앙 수합이나 여러 기기 동기화 기능이 없습니다.
+
+## 판매 전 반드시 확인
+
+`판매전_확인목록.md`, `개인정보_및_이용안내_초안.md`, `사진_출처_및_교체안내.md`를 확인하세요. 특히 사진별 촬영자와 라이선스 표기는 원본 페이지에서 다시 검증해야 합니다.
